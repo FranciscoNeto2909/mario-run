@@ -1,0 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-container {
+    height: 30em;
+    width: 80%;
+    background: linear-gradient(to bottom, rgb(0, 89, 255), #fff);
+    border: 2px solid black;
+    border-bottom: 15px solid rgb(24, 179, 24);
+    position: relative;
+    overflow: hidden;
+}
+
+.game-pipe {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    bottom: 0;
+}
+
+.game-player {
+    height: 120px;
+    position: absolute;
+    bottom: 0;
+}
+
+.game-clouds{
+    margin-top: 5px;
+    height: 170px;
+    position: absolute;
+}
+@keyframes pipeMove {
+    from {
+        right: -80px;
+    }
+
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes cloudsMove {
+    from {
+        right: -400px;
+    }
+
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes jump {
+    0% {
+        bottom: 0;
+    }
+
+    40% {
+        bottom: 100px;
+    }
+
+    50% {
+        bottom: 100px;
+    }
+
+    60% {
+        bottom: 100px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+@media(max-width:600px){
+    .game-container{
+        width: 100%;
+    }
+}
