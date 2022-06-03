@@ -25,7 +25,7 @@ function startGame() {
     }, 10)
 
     document.addEventListener("keydown", (e) => {
-        if (e.keyCode === 32) {
+        if (e.keyCode === 32 && loop === true) {
             jump()
         }
     })
@@ -63,6 +63,7 @@ function sobreposicao(elemA, elemB) {
 
 function gameOver(pipePos, playerPos) {
     loop = false
+    playerJumpAudio.pause()
     gameOverMusic.play()
     setTimeout(() => {
         gameOverMusic.pause()
