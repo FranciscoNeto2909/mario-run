@@ -59,6 +59,9 @@ function sobreposicao(elemA, elemB) {
 function gameOver(pipePos, playerPos) {
     loop = false
     gameOverMusic.play()
+    setTimeout(() => {
+        gameOverMusic.pause()
+    }, 7000);
     pipe.style.animation = "none"
     pipe.style.left = `${pipePos}px`
     player.style.animation = "none"
@@ -72,4 +75,4 @@ function gameOver(pipePos, playerPos) {
     }, 1000);
 }
 console.log(loop)
-btn_play.addEventListener("click", () => { loop ? startGame() : location.reload() && startGame()})
+btn_play.addEventListener("click", () => { loop ? startGame() : location.reload() && startGame() })
