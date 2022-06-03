@@ -18,9 +18,12 @@
     width: 80%;
     background: linear-gradient(to bottom, rgb(0, 89, 255),#fff);
     border: 2px solid black;
-    border-bottom: 15px solid rgb(24, 179, 24);
     position: relative;
     overflow: hidden;
+}
+.game-background{
+    width: 100%;
+    height: 120%;
 }
 .game-btn-play{
     position: absolute;
@@ -41,13 +44,13 @@
     height: 60px;
     width: 60px;
     position: absolute;
-    bottom: 0;
+    bottom: 65px;
 }
 
 .game-player {
     height: 120px;
     position: absolute;
-    bottom: 0;
+    bottom: 65px;
 }
 .game-player--small{
     height: 90px;
@@ -94,23 +97,23 @@
 
 @keyframes jump {
     0% {
-        bottom: 0;
+        bottom: 65px;
     }
 
     40% {
-        bottom: 100px;
+        bottom: 165px;
     }
 
     50% {
-        bottom: 100px;
+        bottom: 165px;
     }
 
     60% {
-        bottom: 100px;
+        bottom: 165px;
     }
 
     100% {
-        bottom: 0;
+        bottom: 65px;
     }
 }
 @keyframes gameover{
@@ -133,6 +136,7 @@
 
     .game-player {
         height: 60px;
+        bottom: 40px;
     }
     .game-player--small{
         height: 50px;
@@ -140,10 +144,32 @@
     .game-pipe {
         height: 40px;
         width: 40px;
+        bottom: 45px;
     }
 
     .game-clouds {
-        height: 140px;
+        height: 100px;
+    }
+    @keyframes jump {
+        0% {
+            bottom: 40px;
+        }
+    
+        40% {
+            bottom: 140px;
+        }
+    
+        50% {
+            bottom: 140px;
+        }
+    
+        60% {
+            bottom: 140px;
+        }
+    
+        100% {
+            bottom: 40px;
+        }
     }
 
 }
