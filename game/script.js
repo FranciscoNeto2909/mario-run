@@ -6,7 +6,7 @@ const playerJumpAudio = document.querySelector(".game-sound--jump")
 const gameMusicAudio = document.querySelector(".game-sound--music")
 const gameOverMusic = document.querySelector(".game-sound--gameover")
 player.src = "./game/imgs/mario1.png"
-player.style.height = "90px"
+player.style.height = "6rem"
 pipe.style.visibility = "hidden"
 let loop = true
 
@@ -41,7 +41,7 @@ function startGame() {
 function jump() {
     player.src = "./game/imgs/mario_flying.png"
     player.style.animation = "jump 600ms linear"
-    player.style.height = "90px"
+    player.style.height = "6rem"
     playerJumpAudio.play()
 
     setTimeout(() => {
