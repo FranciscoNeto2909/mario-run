@@ -4,14 +4,13 @@ const player = document.querySelector(".game-player")
 const clouds = document.querySelector(".game-clouds")
 const playerJumpAudio = document.querySelector(".game-sound--jump")
 const gameMusicAudio = document.querySelector(".game-sound--music")
-
+const gameOverMusic = document.querySelector(".game-sound--gameover")
 pipe.style.visibility = "hidden"
 
 let loop = true
-gameMusicAudio.src = "./game/sounds/game_sound.mp3"
-gameMusicAudio.play()
 
 function startGame() {
+    gameMusicAudio.play()
     pipe.style.visibility = "visible"
     pipe.style.animation = "pipeMove 1.3s linear infinite"
     clouds.style.animation = "cloudsMove 2.5s linear infinite"
@@ -20,6 +19,7 @@ function startGame() {
         const playerPos = +window.getComputedStyle(player).bottom.replace("px", "")
 
         if (sobreposicao(player, pipe)) {
+            gameMusicAudio.pause()
             gameOver(pipePos, playerPos)
         }
     }, 10)
@@ -58,8 +58,7 @@ function sobreposicao(elemA, elemB) {
 
 function gameOver(pipePos, playerPos) {
     loop = false
-    gameMusicAudio.src = "./game/sounds/game_over_sound.mp3"
-    gameMusicAudio.play()
+    gameOverMusic.play()
     pipe.style.animation = "none"
     pipe.style.left = `${pipePos}px`
     player.style.animation = "none"
@@ -73,4 +72,4 @@ function gameOver(pipePos, playerPos) {
     }, 1000);
 }
 console.log(loop)
-btn_play.addEventListener("click", () => { loop ? startGame() : location.reload() && startGame() })
+btn_play.addEventListener("click", () => { loop ? startGame() : location.reload() && startGame()})
