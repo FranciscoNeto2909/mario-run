@@ -44,6 +44,9 @@
 .game-gameover{
     animation: gameover 1s linear;
 }
+.game-sound{
+    visibility: hidden;
+}
 .author{
     width: 100%;
     text-align: center;
