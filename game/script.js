@@ -5,15 +5,11 @@ const clouds = document.querySelector(".game-clouds")
 const playerJumpAudio = document.querySelector(".game-sound--jump")
 const gameMusicAudio = document.querySelector(".game-sound--music")
 const gameOverMusic = document.querySelector(".game-sound--gameover")
-player.src = "./game/imgs/mario1.png"
-player.style.height = "6rem"
 pipe.style.visibility = "hidden"
+
 let loop = true
 
 function startGame() {
-    player.src = "./game/imgs/mario2.gif"
-    player.style.height = "120px"
-
     gameMusicAudio.play()
     pipe.style.visibility = "visible"
     pipe.style.animation = "pipeMove 1.3s linear infinite"
@@ -37,15 +33,18 @@ function startGame() {
     document.ontouchstart = () => {
         jump()
     }
+    document.ontouchend = () => {
+        player.src = "./game/imgs/mario2.gif"
+    }
 }
 function jump() {
-    player.src = "./game/imgs/mario_flying.png"
     player.style.animation = "jump 600ms linear"
-    player.style.height = "6rem"
+    player.src = "./game/imgs/mario_flying.png"
     playerJumpAudio.play()
 
     setTimeout(() => {
         player.style.animation = ""
+        player.src = "./game/imgs/mario2.gif"
     }, 500);
 }
 
@@ -65,17 +64,17 @@ function sobreposicao(elemA, elemB) {
 function gameOver(pipePos, playerPos) {
     loop = false
     gameOverMusic.play()
+    setTimeout(() => {
+        gameOverMusic.pause()
+    }, 7000);
     pipe.style.animation = "none"
     pipe.style.left = `${pipePos}px`
     player.style.animation = "none"
     player.style.bottom = `${playerPos}px`
     player.src = "../game/imgs/game-over.png"
-    player.style.height = "100px"
+    player.classList.add("game-player--small")
     player.style.animation = "gameover 1s linear"
     clouds.style.animation = "none"
-    setTimeout(() => {
-        gameOverMusic.pause()
-    }, 7000);
     setTimeout(() => {
         player.style.visibility = "hidden"
     }, 1000);
