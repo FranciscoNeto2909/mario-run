@@ -40,7 +40,7 @@ function gameOver(pipePos, playerPos) {
     pipe.style.left = `${pipePos}px`
     player.style.animation = "none"
     player.style.bottom = `${playerPos}px`
-    player.src = "../src/imgs/game-over.png"
+    player.src = "../game/imgs/game-over.png"
     player.style.height = "100px"
     clouds.style.animation= "none"
 }
