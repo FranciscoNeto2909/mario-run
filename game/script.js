@@ -10,10 +10,12 @@ function startGame() {
     pipe.style.visibility = "visible"
     pipe.style.animation = "pipeMove 1.3s linear infinite"
     clouds.style.animation = "cloudsMove 2.5s linear infinite"
-     setInterval(() => {
+
+    setInterval(() => {
         const pipePos = pipe.offsetLeft
         const playerPos = +window.getComputedStyle(player).bottom.replace("px", "")
-        if (pipePos <= 95 && pipePos > 0 && playerPos < 60) {
+
+        if (sobreposicao(player, pipe)) {
             gameOver(pipePos, playerPos)
         }
     }, 10)
@@ -22,9 +24,9 @@ function startGame() {
         if (e.keyCode === 32) {
             jump()
         }
-    }) 
+    })
 
-    document.ontouchstart = ()=>{
+    document.ontouchstart = () => {
         jump()
     }
 }
@@ -34,6 +36,19 @@ function jump() {
         player.style.animation = ""
     }, 500);
 }
+function sobreposicao(elemA, elemB) {
+    const a = elemA.getBoundingClientRect()
+    const b = elemB.getBoundingClientRect()
+
+    const horizontal = a.left + a.width >= b.left
+    && b.left + b.width >= a.left
+
+    const vertical = a.top + a.height >= b.top
+    && b.top + b.height >= a.top
+
+    return vertical && horizontal
+}
+
 function gameOver(pipePos, playerPos) {
     loop = false
     pipe.style.animation = "none"
@@ -42,8 +57,7 @@ function gameOver(pipePos, playerPos) {
     player.style.bottom = `${playerPos}px`
     player.src = "../game/imgs/game-over.png"
     player.style.height = "100px"
-    clouds.style.animation= "none"
+    clouds.style.animation = "none"
 }
 console.log(loop)
-btn_play.addEventListener("click",()=>{loop ? startGame() : location.reload() &&startGame()})
-   
+btn_play.addEventListener("click", () => { loop ? startGame() : location.reload() && startGame() })

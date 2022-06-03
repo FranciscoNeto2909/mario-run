@@ -36,11 +36,12 @@
     bottom: 0;
 }
 
-.game-clouds{
+.game-clouds {
     margin-top: 5px;
     height: 170px;
     position: absolute;
 }
+
 @keyframes pipeMove {
     from {
         right: -80px;
@@ -83,8 +84,22 @@
     }
 }
 
-@media(max-width:600px){
-    .game-container{
+@media(max-width:600px) {
+    .game-container {
+        height: 20em;
         width: 100%;
+    }
+
+    .game-player {
+        height: 60px;
+    }
+
+    .game-pipe {
+        height: 40px;
+        width: 40px;
+    }
+
+    .game-clouds {
+        height: 140px;
     }
 }
