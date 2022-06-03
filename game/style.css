@@ -16,7 +16,7 @@
 .game-container {
     height: 30em;
     width: 80%;
-    background: linear-gradient(to bottom, rgb(0, 89, 255), #fff);
+    background: linear-gradient(to bottom, rgb(0, 89, 255),#fff);
     border: 2px solid black;
     border-bottom: 15px solid rgb(24, 179, 24);
     position: relative;
