@@ -11,8 +11,9 @@ pipe.style.visibility = "hidden"
 let loop = true
 
 function startGame() {
-    player.style.height = "110px"
     player.src = "./game/imgs/mario2.gif"
+    player.style.height = "120px"
+
     gameMusicAudio.play()
     pipe.style.visibility = "visible"
     pipe.style.animation = "pipeMove 1.3s linear infinite"
@@ -40,6 +41,7 @@ function startGame() {
 function jump() {
     player.src = "./game/imgs/mario_flying.png"
     player.style.animation = "jump 600ms linear"
+    player.style.height = "90px"
     playerJumpAudio.play()
 
     setTimeout(() => {
