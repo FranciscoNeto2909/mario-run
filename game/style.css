@@ -44,6 +44,14 @@
 .game-gameover{
     animation: gameover 1s linear;
 }
+.author{
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    background-color: #333;
+    color: #fff;
+}
 @keyframes pipeMove {
     from {
         right: -80px;
