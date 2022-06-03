@@ -36,6 +36,7 @@ function jump() {
         player.style.animation = ""
     }, 500);
 }
+
 function sobreposicao(elemA, elemB) {
     const a = elemA.getBoundingClientRect()
     const b = elemB.getBoundingClientRect()
@@ -57,7 +58,11 @@ function gameOver(pipePos, playerPos) {
     player.style.bottom = `${playerPos}px`
     player.src = "../game/imgs/game-over.png"
     player.style.height = "100px"
+    player.style.animation = "gameover 1s linear"
     clouds.style.animation = "none"
+    setTimeout(() => {
+        player.style.visibility = "hidden"
+    }, 1000);
 }
 console.log(loop)
 btn_play.addEventListener("click", () => { loop ? startGame() : location.reload() && startGame() })

@@ -41,7 +41,9 @@
     height: 170px;
     position: absolute;
 }
-
+.game-gameover{
+    animation: gameover 1s linear;
+}
 @keyframes pipeMove {
     from {
         right: -80px;
@@ -83,7 +85,18 @@
         bottom: 0;
     }
 }
+@keyframes gameover{
+    0%{
+        bottom: 0;
+    }
+    40%{
+        bottom: 100px;
+    }
 
+    100%{
+        bottom: -200px;
+    }
+}
 @media(max-width:600px) {
     .game-container {
         height: 20em;
@@ -102,4 +115,5 @@
     .game-clouds {
         height: 140px;
     }
+
 }
