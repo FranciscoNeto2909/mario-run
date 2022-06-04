@@ -22,6 +22,11 @@ function startGame() {
 
         if (sobreposicao(player, pipe)) {
             gameMusicAudio.pause()
+            playerJumpAudio.pause()
+            gameOverMusic.play()
+            setTimeout(() => {
+                gameOverMusic.pause()
+            }, 7000);
             gameOver(pipePos, playerPos)
         }
     }, 10)
@@ -32,9 +37,9 @@ function startGame() {
         }
     })
 
-    document.ontouchstart = () => {
+    loop ? document.ontouchstart = () => {
         jump()
-    }
+    } : ""
     document.ontouchend = () => {
         player.src = "./game/imgs/mario2.gif"
     }
@@ -65,18 +70,13 @@ function sobreposicao(elemA, elemB) {
 
 function gameOver(pipePos, playerPos) {
     loop = false
-    playerJumpAudio.pause()
-    gameOverMusic.play()
-    setTimeout(() => {
-        gameOverMusic.pause()
-    }, 7000);
     pipe.style.animation = "none"
     pipe.style.left = `${pipePos}px`
     player.style.animation = "none"
     player.style.bottom = `${playerPos}px`
     player.src = "../game/imgs/game-over.png"
     player.classList.add("game-player--small")
-    player.style.animation = "gameover 1s linear"
+    player.style.animation = "gameover 1s ease-out"
     clouds.style.animation = "none"
     setTimeout(() => {
         player.style.visibility = "hidden"
