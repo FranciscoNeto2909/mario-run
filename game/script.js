@@ -5,9 +5,11 @@ const clouds = document.querySelector(".game-clouds")
 const playerJumpAudio = document.querySelector(".game-sound--jump")
 const gameMusicAudio = document.querySelector(".game-sound--music")
 const gameOverMusic = document.querySelector(".game-sound--gameover")
+const gameBackground = document.querySelector(".game-background")
 pipe.style.visibility = "hidden"
 
 let loop = true
+gameBackground.oncontextmenu = ()=>false
 
 function startGame() {
     gameMusicAudio.play()
