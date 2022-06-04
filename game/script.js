@@ -9,7 +9,7 @@ const gameBackground = document.querySelector(".game-background")
 pipe.style.visibility = "hidden"
 
 let loop = true
-gameBackground.oncontextmenu = ()=>false
+gameBackground.oncontextmenu = () => false
 
 function startGame() {
     gameMusicAudio.play()
@@ -26,8 +26,8 @@ function startGame() {
             playerJumpAudio.pause()
             gameOverMusic.play()
             setTimeout(() => {
-                gameOverMusic.src=""
-            },7000)
+                gameOverMusic.src = ""
+            }, 7000)
             gameOver(pipePos, playerPos)
         }
     }, 10)
@@ -78,9 +78,13 @@ function gameOver(pipePos, playerPos) {
     player.classList.add("game-player--small")
     player.style.animation = "gameover 1s ease-out"
     clouds.style.animation = "none"
+    
     setTimeout(() => {
         player.style.visibility = "hidden"
     }, 1000);
 }
 console.log(loop)
-btn_play.addEventListener("click", () => { loop ? startGame() : location.reload() && startGame() })
+btn_play.addEventListener("click", () => {
+    loop ? startGame() :
+    location.reload() && startGame()
+})
