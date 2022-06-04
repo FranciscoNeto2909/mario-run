@@ -148,7 +148,7 @@
     }
 
     .game-clouds {
-        height: 10 0px;
+        height: 100px;
     }
     @keyframes jump {
         0% {
