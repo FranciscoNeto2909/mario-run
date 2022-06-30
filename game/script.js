@@ -103,7 +103,7 @@ function gameOver(pipePos, playerPos) {
     playerJumpAudio.pause()
     gameOverMusic.play()
     setTimeout(() => {
-        gameOverMusic.src = ""
+        location.reload()
     }, 7000)
 
     pipe.style.animation = "none"
