@@ -1,17 +1,24 @@
+const gameContainer = document.querySelector(".game-container")
+const tryAgain = document.querySelector(".try-again-container")
 const pipe = document.querySelector(".game-pipe")
-const btn_play = document.querySelector(".game-btn-play")
 const player = document.querySelector(".game-player")
 const clouds = document.querySelector(".game-clouds")
 const playerJumpAudio = document.querySelector(".game-sound--jump")
 const gameMusicAudio = document.querySelector(".game-sound--music")
 const gameOverMusic = document.querySelector(".game-sound--gameover")
 const gameBackground = document.querySelector(".game-background")
+const btn_try_again = document.querySelector(".btn_try_again")
+
+player.src = "../game/imgs/mario2.gif"
 pipe.style.visibility = "hidden"
 let loop = true
+let started = false
 let point = 0
+let isPlayed = false
 gameBackground.oncontextmenu = () => false
 
 function startGame() {
+    started = true
     let pipeVel = "1.3s"
     if (point >= 50) {
         pipeVel = "1.1s"
@@ -25,7 +32,7 @@ function startGame() {
     pipe.style.animation = `pipeMove ${pipeVel} linear infinite`
     clouds.style.animation = "cloudsMove 2.5s linear infinite"
     pointCounter()
-    
+
     setInterval(() => {
         const pipePos = pipe.offsetLeft
         const playerPos = +window.getComputedStyle(player).bottom.replace("px", "")
@@ -33,7 +40,7 @@ function startGame() {
     }, 100)
 
     document.addEventListener("keydown", (e) => {
-        if (e.keyCode === 32 && loop) {
+        if (e.code == "Space" && loop) {
             jump()
         }
     })
@@ -50,8 +57,8 @@ function startGame() {
 
 }
 function pointCounter() {
-    setInterval(() => {
-        loop ? point += 1 : ""
+    loop && setTimeout(() => {
+        point += 1
         document.querySelector(".game-points").innerHTML = point
     }, 500);
 }
@@ -61,10 +68,10 @@ function jump() {
     player.src = "./game/imgs/mario_flying.png"
     playerJumpAudio.play()
 
-    setTimeout(() => {
-        player.style.animation = ""
-        player.src = "./game/imgs/mario2.gif"
-    }, 500);
+    player.addEventListener("animationend", () => {
+        player.src = "./game/imgs/mario2.gif";
+        player.style.animation = "";
+    });
 }
 
 function sobreposicao(elemA, elemB, pipePos, playerPos) {
@@ -93,18 +100,16 @@ function points(elemA, elemB) {
 
     if (vertical && horizontal) {
         point += 1
-        document.querySelector(".game-points").innerHTML = 5
-        console.log(point)
     }
 }
-function gameOver(pipePos, playerPos) {
+async function gameOver(pipePos, playerPos) {
+    tryAgain.style.display = "flex"
+
     loop = false
     gameMusicAudio.pause()
     playerJumpAudio.pause()
-    gameOverMusic.play()
-    setTimeout(() => {
-        location.reload()
-    }, 7000)
+    !isPlayed && gameOverMusic.play()
+    
 
     pipe.style.animation = "none"
     pipe.style.left = `${pipePos}px`
@@ -112,15 +117,25 @@ function gameOver(pipePos, playerPos) {
     player.style.bottom = `${playerPos}px`
     player.src = "../game/imgs/game-over.png"
     player.classList.add("game-player--small")
-    player.style.animation = "gameover 1s ease-out"
+    player.style.animation = "gameover 3s ease-out"
     clouds.style.animation = "none"
     setTimeout(() => {
-        player.style.visibility = "hidden"
-    }, 1000);
+        player.style.display = "none"
+        isPlayed = true
+    }, 2950);
+
 }
 
-btn_play.addEventListener("click", () => {
+window.addEventListener("keydown", (e) => {
+    e.code == "Space" && !started &&
+        startGame()
+})
+
+window.ontouchend = () => {
+    !started && startGame()
+}
+
+btn_try_again.addEventListener("click", () => {
     loop ? startGame() :
         location.reload() && startGame()
 })
-

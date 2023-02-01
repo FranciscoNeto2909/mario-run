@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,21 +9,31 @@
     <link rel="stylesheet" href="../game/style.css">
     <script src="../game/script.js" defer></script>
 </head>
-<body class="container">
-    <h4 class="game-desc game-desc--desktop">O botão play inicia o jogo. use a barra de espaço para desviar dos canos</h4>
-    <h4 class="game-desc game-desc--mobile">O botão play inicia o jogo. toque na tela para desviar dos canos</h4>
-    <div class="game-container">
-        <button class="game-btn-play">Play</button>
-        <audio src="./game//sounds/game_sound.mp3" class="game-sound game-sound--music"></audio>
-        <audio src="./game/sounds/player-jump.mp3" class="game-sound game-sound--jump"></audio>
-        <audio src="./game/sounds/game_over_sound.mp3" class="game-sound game-sound--gameover"></audio>
-        <p class="game-points">0</p>
 
-        <img src="../game/imgs/clouds.png" alt="clouds" class="game-clouds">
-        <img src="../game/imgs/mario2.gif" alt="player" class="game-player">
-        <img src="../game/imgs/pipe.png" alt="pipe" class="game-pipe">
-        <img src="./game/imgs/background.jpg"class="game-background" alt="">
+<body>
+    <h1 class="game-title">Super mario jump</h1>
+    <p class="game-desc game-desc--desktop">Aperte espaço para iniciar o jogo e para desviar dos canos</p>
+    <p class="game-desc game-desc--mobile">Toque na tela para inicar o jogo e desviar dos canos</p>
+    <div class="container">
+        <div class="game-container">
+            <audio src="./game//sounds/game_sound.mp3" class="game-sound game-sound--music"></audio>
+            <audio src="./game/sounds/player-jump.mp3" class="game-sound game-sound--jump"></audio>
+            <audio src="./game/sounds/game_over_sound.mp3" class="game-sound game-sound--gameover"></audio>
+            <p class="game-score">Time:<span class="game-points">0</span></p>
+
+            <img src="../game/imgs/clouds.png" alt="clouds" class="game-clouds">
+            <img src="" class="game-player">
+            <img src="../game/imgs/pipe.png" alt="pipe" class="game-pipe">
+            <img src="./game/imgs/background.jpg" class="game-background" alt="">
+        </div>
+        <div class="try-again-container">
+            <div class="try-again">
+                <h1>Game over!</h1>
+                <button class="btn_try_again">Jogar de novo</button>
+            </div>
+        </div>
+        <footer class="game-author">By: Francisco Neto</footer>
     </div>
-    <footer class="game-author">By: Francisco Neto</footer>
 </body>
-</html> 
+
+</html>
