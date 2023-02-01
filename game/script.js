@@ -13,26 +13,20 @@ player.src = "../game/imgs/mario2.gif"
 pipe.style.visibility = "hidden"
 let loop = true
 let started = false
-let point = 0
+let point = 30
 let isPlayed = false
 gameBackground.oncontextmenu = () => false
 
 function startGame() {
     started = true
     let pipeVel = "1.3s"
-    if (point >= 50) {
-        pipeVel = "1.1s"
-    } else if (point >= 100) {
-        pipeVel = "900ms"
-    } else if (point >= 200) {
-        pipeVel = "700ms"
-    }
+    pipe.style.animation = `pipeMove ${pipeVel} linear infinite`
+
     gameMusicAudio.play()
     pipe.style.visibility = "visible"
-    pipe.style.animation = `pipeMove ${pipeVel} linear infinite`
     clouds.style.animation = "cloudsMove 2.5s linear infinite"
     pointCounter()
-
+    pipeVelocity()
     setInterval(() => {
         const pipePos = pipe.offsetLeft
         const playerPos = +window.getComputedStyle(player).bottom.replace("px", "")
@@ -56,9 +50,25 @@ function startGame() {
     }
 
 }
+
+function pipeVelocity() {
+    setInterval(() => {
+        if (point == 15) {
+            pipe.style.animation = `pipeMove 1.1s linear infinite`
+        } else if (point == 25) {
+            pipe.style.animation = `pipeMove 1s linear infinite`
+        } else if (point == 35) {
+            pipe.style.animation = `pipeMove 900ms linear infinite`
+        } else if (point == 45) {
+            pipe.style.animation = `pipeMove 800ms linear infinite`
+        }
+
+    }, 500)
+}
+
 function pointCounter() {
-    loop && setTimeout(() => {
-        point += 1
+    setInterval(() => {
+        loop ? point += 1 : ""
         document.querySelector(".game-points").innerHTML = point
     }, 500);
 }
@@ -109,7 +119,7 @@ async function gameOver(pipePos, playerPos) {
     gameMusicAudio.pause()
     playerJumpAudio.pause()
     !isPlayed && gameOverMusic.play()
-    
+
 
     pipe.style.animation = "none"
     pipe.style.left = `${pipePos}px`
