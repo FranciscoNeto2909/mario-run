@@ -13,7 +13,7 @@ player.src = "../game/imgs/mario2.gif"
 pipe.style.visibility = "hidden"
 let loop = true
 let started = false
-let point = 30
+let point = 0
 let isPlayed = false
 gameBackground.oncontextmenu = () => false
 
