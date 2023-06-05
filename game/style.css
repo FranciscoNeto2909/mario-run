@@ -81,6 +81,7 @@ body {
     height: 120px;
     position: absolute;
     bottom: 65px;
+    z-index: 5;
 }
 
 .game-player--small {
